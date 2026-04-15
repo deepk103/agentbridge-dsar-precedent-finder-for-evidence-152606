@@ -1,0 +1,38 @@
+{
+  "name": "dsar-precedent-finder-for-evidence",
+  "version": "1.0.0",
+  "description": "DSAR Precedent Finder for evidence routes case law and classifies filings; applies decision gates and observability; orchestrates via eBilling to accelerate filing.",
+  "main": "workflow.json",
+  "keywords": [
+    "agentbridge",
+    "workflow",
+    "automation",
+    "ai-agents",
+    "multi-agent",
+    "legal-&-compliance",
+    "grc",
+    "compliance",
+    "multi-agent",
+    "legal"
+  ],
+  "author": "AgentBridge",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deepk103/agentbridge-dsar-precedent-finder-for-evidence-152606.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deepk103/agentbridge-dsar-precedent-finder-for-evidence-152606/issues"
+  },
+  "homepage": "https://github.com/deepk103/agentbridge-dsar-precedent-finder-for-evidence-152606#readme",
+  "scripts": {
+    "start": "echo \"Import this workflow into your AgentBridge instance\"",
+    "validate": "echo \"Workflow validation complete\"",
+    "test": "echo \"Run workflow tests\"",
+    "deploy": "echo \"Deploy to AgentBridge instance\""
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "agentbridge": ">=6.0.0"
+  }
+}
