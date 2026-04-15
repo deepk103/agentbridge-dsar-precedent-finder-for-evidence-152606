@@ -1,0 +1,379 @@
+{
+  "id": "tpl-2013825428",
+  "name": "DSAR Precedent Finder for evidence",
+  "description": "DSAR Precedent Finder for evidence routes case law and classifies filings; applies decision gates and observability; orchestrates via eBilling to accelerate filing.",
+  "industry": "Legal & Compliance",
+  "pattern": "Multi-Agent",
+  "complexity": "Advanced",
+  "rating": 4.5,
+  "downloads": 6499,
+  "favorites": 1465,
+  "executionTime": "6 min",
+  "tags": [
+    "grc",
+    "compliance",
+    "multi-agent",
+    "legal"
+  ],
+  "steps": [
+    {
+      "id": "intake",
+      "name": "Request Intake",
+      "description": "Collect, validate and normalize emails from Records; attach a runId and timestamp for traceability."
+    },
+    {
+      "id": "delegate-0",
+      "name": "Delegate",
+      "description": "Execute delegate phase for the Multi-Agent pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "handoff-1",
+      "name": "Handoff",
+      "description": "Execute handoff phase for the Multi-Agent pattern: persist interim state, enforce guardrails, and emit structured JSON results."
+    },
+    {
+      "id": "entity-extraction-0",
+      "name": "Entity Extraction",
+      "description": "Entity Extraction across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "policy-check-1",
+      "name": "Policy Check",
+      "description": "Policy Check across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "review-routing-2",
+      "name": "Review Routing",
+      "description": "Review Routing across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "classification-3",
+      "name": "Classification",
+      "description": "Classification across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "ingestion-4",
+      "name": "Ingestion",
+      "description": "Ingestion across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability."
+    },
+    {
+      "id": "finalize",
+      "name": "Privilege Log",
+      "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to DMS; return response JSON for the client."
+    }
+  ],
+  "nodes": [
+    {
+      "id": "intake",
+      "type": "agentbridge",
+      "data": {
+        "label": "Request Intake",
+        "description": "Collect, validate and normalize emails from Records; attach a runId and timestamp for traceability.",
+        "nodeType": "input",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 60,
+        "y": 120
+      }
+    },
+    {
+      "id": "delegate-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Delegate",
+        "description": "Execute delegate phase for the Multi-Agent pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "condition",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 310,
+        "y": 120
+      }
+    },
+    {
+      "id": "handoff-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Handoff",
+        "description": "Execute handoff phase for the Multi-Agent pattern: persist interim state, enforce guardrails, and emit structured JSON results.",
+        "nodeType": "a2a",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 560,
+        "y": 120
+      }
+    },
+    {
+      "id": "entity-extraction-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "Entity Extraction",
+        "description": "Entity Extraction across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 810,
+        "y": 120
+      }
+    },
+    {
+      "id": "policy-check-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "Policy Check",
+        "description": "Policy Check across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1060,
+        "y": 120
+      }
+    },
+    {
+      "id": "review-routing-2",
+      "type": "agentbridge",
+      "data": {
+        "label": "Review Routing",
+        "description": "Review Routing across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "mcp",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1310,
+        "y": 120
+      }
+    },
+    {
+      "id": "classification-3",
+      "type": "agentbridge",
+      "data": {
+        "label": "Classification",
+        "description": "Classification across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1560,
+        "y": 120
+      }
+    },
+    {
+      "id": "ingestion-4",
+      "type": "agentbridge",
+      "data": {
+        "label": "Ingestion",
+        "description": "Ingestion across joined datasets; branch on thresholds using decision gates; write metrics (success/error counts) for observability.",
+        "nodeType": "llm",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 1810,
+        "y": 120
+      }
+    },
+    {
+      "id": "finalize",
+      "type": "agentbridge",
+      "data": {
+        "label": "Privilege Log",
+        "description": "Assemble final payload with status, artifacts, KPIs and audit trail; store to DMS; return response JSON for the client.",
+        "nodeType": "output",
+        "category": "a2a-agents",
+        "executionMode": "autonomous"
+      },
+      "position": {
+        "x": 2060,
+        "y": 120
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-0",
+      "source": "intake",
+      "target": "delegate-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-1",
+      "source": "delegate-0",
+      "target": "handoff-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-2",
+      "source": "handoff-1",
+      "target": "entity-extraction-0",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-3",
+      "source": "entity-extraction-0",
+      "target": "policy-check-1",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-4",
+      "source": "policy-check-1",
+      "target": "review-routing-2",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-5",
+      "source": "review-routing-2",
+      "target": "classification-3",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-6",
+      "source": "classification-3",
+      "target": "ingestion-4",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    },
+    {
+      "id": "edge-7",
+      "source": "ingestion-4",
+      "target": "finalize",
+      "type": "agentbridge",
+      "data": {
+        "label": "flow"
+      }
+    }
+  ],
+  "preview": "Request Intake → Delegate → Handoff → Entity Extraction → Policy Check → Review Routing → Classification → Ingestion → Privilege Log",
+  "featured": true,
+  "createdAt": "2025-07-26T16:38:44.976Z",
+  "author": "AgentBridge Team",
+  "deployments": 661,
+  "lastDeployed": "2026-03-17T20:49:01.867Z",
+  "configuration": {
+    "provider": "nvidia",
+    "region": "us-west-2",
+    "compute": "gpu-single"
+  },
+  "healthStatus": "healthy",
+  "deploymentCount": 336,
+  "githubRepo": "https://github.com/agentbridge/dsar-precedent-finder-for-evidence",
+  "maintainer": "AgentBridge Team",
+  "agenticLayers": {
+    "reasoning": {
+      "modelType": "gpt-4o",
+      "reasoningPattern": "ReAct",
+      "contextWindow": 128000,
+      "memorySystem": "hybrid",
+      "decisionFramework": "Multi-Criteria Decision Analysis"
+    },
+    "orchestration": {
+      "workflowEngine": "n8n",
+      "coordinationPattern": "centralized",
+      "failoverStrategy": "retry",
+      "loadBalancing": "intelligent"
+    },
+    "protocol": {
+      "communicationProtocol": "MCP",
+      "messageFormat": "JSON",
+      "authenticationMethod": "OAuth2",
+      "encryptionStandard": "AES-256"
+    },
+    "governance": {
+      "policyEngine": "OPA",
+      "complianceStandards": [
+        "SOC2",
+        "GDPR"
+      ],
+      "auditTrail": true,
+      "riskAssessment": "medium",
+      "dataClassification": "internal"
+    },
+    "observability": {
+      "metricsCollection": "Prometheus",
+      "loggingFramework": "ELK",
+      "tracingSystem": "Jaeger",
+      "alertingRules": [],
+      "dashboardConfig": {
+        "layout": "grid",
+        "widgets": [
+          "metrics",
+          "logs",
+          "traces"
+        ],
+        "refreshInterval": 30
+      }
+    },
+    "intelligence": {
+      "learningCapability": "online",
+      "knowledgeBase": "vector-db",
+      "adaptationMechanism": "ml-based",
+      "performanceOptimization": "ai-driven"
+    }
+  },
+  "businessFunction": "data-preparation-node",
+  "autonomyLevel": "semi-autonomous",
+  "cognitiveCapabilities": [
+    {
+      "name": "Pattern Recognition",
+      "description": "Identifies patterns in business processes",
+      "confidenceLevel": 0.85,
+      "lastUpdated": "2026-04-15T16:38:44.999Z"
+    }
+  ],
+  "roiMetrics": {
+    "costSavings": 56229,
+    "timeReduction": 73,
+    "accuracyImprovement": 34,
+    "throughputIncrease": 68,
+    "errorReduction": 64
+  },
+  "complianceFramework": {
+    "standards": [
+      "SOC2",
+      "GDPR",
+      "ISO27001"
+    ],
+    "certifications": [
+      "SOC2 Type II"
+    ],
+    "auditFrequency": "monthly",
+    "lastAudit": "2026-01-19T14:31:09.052Z"
+  },
+  "scalingPolicy": {
+    "minInstances": 1,
+    "maxInstances": 10,
+    "scaleUpThreshold": 80,
+    "scaleDownThreshold": 20,
+    "cooldownPeriod": 300
+  }
+}
